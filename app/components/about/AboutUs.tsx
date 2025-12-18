@@ -6,7 +6,8 @@ import Image from 'next/image'
 export default function AboutUs() {
   return (
     <div className={`px-10 py-37  ${about.outerSection}`}>
-        <div className='flex gap-30 mx-auto text-white items-center'>
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-30 mx-auto text-white items-center">
+
             <div className='w-160'>
                 <p className='text-sm font-bold'>About Us</p>
                 <p className='text-4xl pb-8'>BRINGING PEOPLE TOGETHER,
@@ -24,7 +25,7 @@ export default function AboutUs() {
             </div>
 
             <div className='relative '>
-                <div className='relative w-[550px]  rounded-t-full overflow-hidden group'>
+                <div className='relative  rounded-t-full overflow-hidden group'>
                <Image 
                     src="/images/aboutImg/imgi_4_about-us-image.jpg"
                     alt="about us"
@@ -40,7 +41,8 @@ export default function AboutUs() {
                </div>
 
                        {/* Opening hours box */}    
-                <div className={`${about.opening} text-black`}>
+                <div className={`${about.opening} text-black hidden lg:block`}>
+
                     <Image src='/images/footerImg/download(1).svg' alt="clock" width={50} height={50} />
                     <p className='py-4 text-xl font-bold'>Opening Hours</p>
                     <p className='flex gap-12 '>Monday-Friday <span>09:30-7:30</span></p>
