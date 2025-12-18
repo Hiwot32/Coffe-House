@@ -1,0 +1,24 @@
+.outerDiv{
+    background-color: var(--header-background);
+}
+ul li:hover{
+    color:var(--header-btn)
+}
+.booking{
+  position: relative;
+  overflow: hidden; /* needed for ripple */
+  transition: color 0.3s ease;
+}
+.booking::before {
+  content: '';
+  position: absolute;
+  background-color: var(--header-btn);
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease, height 0.5s ease;
+  z-index: 0;
+}
+
+.booking:hover{
+    background-color: var(--header-btn);
+    color:black;
+}

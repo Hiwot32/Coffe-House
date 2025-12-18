@@ -1,0 +1,9 @@
+.outerDiv{
+    background:
+    linear-gradient(rgba(25, 34, 37, 0.82), rgba(25, 34, 37, 0.83)), 
+    url(../../../public/images/footerImg/footerBg.jpg);
+    background-size: cover;
+}
+.titles{
+    color:var(--header-btn)
+}
