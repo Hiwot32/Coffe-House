@@ -19,10 +19,10 @@ export default function Header() {
             </div>
             <div className="">
                 <ul className="flex gap-10 text-white text-lg cursor-pointer font-bold">
-                    <li>Home</li>
-                    <li>About Us</li>
-                    <li>Menu</li>
-                    <li>Contact Us</li>
+                    <Link href='/'>Home</Link>
+                    <Link href='/about'>About Us</Link>
+                    <Link href='/menu'>Menu</Link>
+                    <Link href='/contact'>Contact Us</Link>
                 </ul>
 
             </div>
