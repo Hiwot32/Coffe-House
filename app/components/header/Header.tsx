@@ -1,16 +1,28 @@
-"use client"
-import React, { useState } from "react"
-import Link from "next/link"
-import Image from "next/image"
-import header from "./header.module.css"
+"use client";
+import React, { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import header from "./header.module.css";
 
 export default function Header() {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
+  const { data: session } = useSession(); // check user login
+  const router = useRouter();
+
+  const handleBookingClick = () => {
+    if (session) {
+      router.push("/booking"); // user logged in
+    } else {
+      router.push("/login"); // user not logged in
+    }
+  };
 
   return (
-    <header className={header.outerDiv}>
-      <div className="flex justify-between items-center w-[90%] mx-auto py-5">
-        
+    <div className={header.outerDiv}>
+      <div className="flex justify-between w-[90%] mx-auto py-5 items-center">
+
         {/* LOGO */}
         <Image
           src="/images/headerImg/imgi_2_logo.svg"
@@ -21,24 +33,19 @@ export default function Header() {
 
         {/* DESKTOP LINKS */}
         <ul className="hidden md:flex gap-10 text-white text-lg font-bold">
-          <li>
-            <Link href="/">Home</Link>
-          </li>
-          <li>
-            <Link href="/about">About Us</Link>
-          </li>
-          <li>
-            <Link href="/menu">Menu</Link>
-          </li>
-          <li>
-            <Link href="/contact">Contact Us</Link>
-          </li>
+          <Link href="/">Home</Link>
+          <Link href="/about">About Us</Link>
+          <Link href="/menu">Menu</Link>
+          <Link href="/contact">Contact Us</Link>
         </ul>
 
-        {/* DESKTOP BOOK BUTTON */}
-        <div className={`hidden md:block ${header.booking} px-6 py-3 text-white font-bold rounded-3xl`}>
-          <Link href="/booking">Book A Table</Link>
-        </div>
+        {/* DESKTOP BOOKING BUTTON */}
+        <button
+          onClick={handleBookingClick}
+          className={`hidden md:block text-white font-bold border border-white p-4 rounded-3xl ${header.booking}`}
+        >
+          Book A Table
+        </button>
 
         {/* MOBILE MENU BUTTON */}
         <button
@@ -51,21 +58,20 @@ export default function Header() {
 
       {/* MOBILE MENU */}
       {open && (
-        <div className={`md:hidden flex flex-col items-center gap-6 py-6 text-white text-lg font-bold`}>
+        <div className="md:hidden flex flex-col items-center gap-6 py-6 text-white text-lg font-bold">
           <Link href="/" onClick={() => setOpen(false)}>Home</Link>
           <Link href="/about" onClick={() => setOpen(false)}>About Us</Link>
           <Link href="/menu" onClick={() => setOpen(false)}>Menu</Link>
           <Link href="/contact" onClick={() => setOpen(false)}>Contact Us</Link>
 
-          <Link
-            href="/booking"
-            className={`px-6 py-3 border border-white rounded-3xl ${header.booking}`}
-            onClick={() => setOpen(false)}
+          <button
+            onClick={handleBookingClick}
+            className={`border border-white px-6 py-3 rounded-3xl ${header.booking}`}
           >
             Book A Table
-          </Link>
+          </button>
         </div>
       )}
-    </header>
-  )
+    </div>
+  );
 }
