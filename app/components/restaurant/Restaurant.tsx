@@ -6,7 +6,7 @@ import Image from 'next/image'
 export default function Restaurant() {
   return (
     <div className={restaurant.outerSection}>
-        <div className='flex gap-15 py-20 px-10'>
+        <div className="flex flex-col lg:flex-row gap-12 py-20 px-10">
             <div className='text-center text-white items-center'>
                 <p className='text-sm font-bold pb-2'>About Restaurant</p>
                 <p className='text-4xl pb-8 border-b border-b-white'>OUR PHILOSOPHY</p>
@@ -24,7 +24,7 @@ export default function Restaurant() {
 
             </div>
             <div className='rounded-t-full overflow-hidden py-4'>
-                <Image src='/images/restauratImg/imgi_11_about-restaurant-img.jpg' alt='restaurant' width={550} height={800} />
+                <Image src='/images/restauratImg/imgi_11_about-restaurant-img.jpg' alt='restaurant' width={560} height={790} />
 
             </div>
             <div className='text-center text-white'>

@@ -8,7 +8,7 @@ export default function AboutUs() {
     <div className={`px-10 py-37  ${about.outerSection}`}>
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-30 mx-auto text-white items-center">
 
-            <div className='w-160'>
+            <div className='w-80 md:w-150'>
                 <p className='text-sm font-bold'>About Us</p>
                 <p className='text-4xl pb-8'>BRINGING PEOPLE TOGETHER,
                     ONE CUP AT A TIME</p>
@@ -21,7 +21,6 @@ export default function AboutUs() {
                     <p className='text-lg'><span className='text-xl font-bold'>Event Elegance</span><br />
                     Host your special moments with us! From intimate gatherings to vibrant celebrations offers.</p>
                 </div>
-                <button className='mt-13'>More About Us</button>
             </div>
 
             <div className='relative '>
