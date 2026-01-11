@@ -1,11 +1,10 @@
 "use client"
 import React from 'react'
-import restaurant from './restaurant.module.css'
 import Image from 'next/image'
 
 export default function Restaurant() {
   return (
-    <div className={restaurant.outerSection}>
+    <div className="bg-[rgb(23,33,39)]">
         <div className="flex flex-col lg:flex-row gap-12 py-20 px-10">
             <div className='text-center text-white items-center'>
                 <p className='text-sm font-bold pb-2'>About Restaurant</p>

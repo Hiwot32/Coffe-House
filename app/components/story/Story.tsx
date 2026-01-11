@@ -1,11 +1,10 @@
 "use client";
 import React from "react";
-import story from "./story.module.css";
 import Image from "next/image";
 
 export default function Story() {
   return (
-    <div className={story.outerSection}>
+    <div className="bg-[rgb(23,33,39)]">
       <div className="py-20 px-10 flex flex-col lg:flex-row gap-12">
        
         <div className="rounded-t-full  group relative overflow-hidden  rounded-xl bg-gray-800">

@@ -21,7 +21,7 @@ export default function SignUpPage() {
     });
 
     if (res.ok) {
-      router.push("/booking");
+      router.push("/login");
     } else {
       const error = await res.text();
       alert(error);

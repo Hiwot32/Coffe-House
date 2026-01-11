@@ -3,7 +3,6 @@ import  { useState } from "react";
 import Image from "next/image";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-import offer from "./offer.module.css";
 
 export default function Offer() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -28,7 +27,7 @@ export default function Offer() {
   ];
 
   return (
-    <div className={offer.outerDiv}>
+    <div className="bg-[rgb(18,29,35)] bg-[url('/images/aboutImg/imgi_45_about-bg-image.png')] bg-contain bg-no-repeat">
       <div className="flex flex-col lg:flex-row gap-8 lg:gap-30 px-6 sm:px-10 py-12 sm:py-20">
         <div className="w-full lg:w-1/2 pt-4 text-white">
           <p className="font-bold text-lg sm:text-xl pb-2">What We Offer</p>

@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import menu from './menu.module.css';
 import Image from 'next/image';
 
 interface Product {
@@ -41,7 +40,7 @@ export default function Menu() {
   }, []);
 
   return (
-    <div className={`px-4 ${menu.outerDiv}`}>
+    <div className="px-4 bg-[rgb(18,29,35)]">
       <div className="text-white text-center py-20">
         <p className="text-sm">Main Menu</p>
         <p className="text-5xl font-bold">OUR ORIGINAL COFFEE</p>

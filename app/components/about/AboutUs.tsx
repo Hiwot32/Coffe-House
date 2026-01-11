@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function AboutUs() {
   return (
-    <div className={`px-10 py-37  ${about.outerSection}`}>
+    <div className="px-10 py-37 bg-[rgb(18,29,35)] bg-[url('/images/aboutImg/imgi_45_about-bg-image.png')] bg-contain">
       <div className="flex flex-col lg:flex-row gap-12 lg:gap-30 mx-auto text-white items-center">
         <div className="w-80 md:w-150">
           <p className="text-sm font-bold">About Us</p>
@@ -59,7 +59,7 @@ export default function AboutUs() {
             ></div>
           </div>
 
-          <div className={`${about.opening} text-black hidden lg:block`}>
+          <div className="absolute bottom-[20px] left-[-12%]  w-[60%] p-[30px] rounded-[20px] bg-[rgb(211,179,147)] shadow-lg text-black">
             <Image
               src="/images/footerImg/download(1).svg"
               alt="clock"
