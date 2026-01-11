@@ -9,7 +9,7 @@ export default function Journy() {
   const [customers, setCustomers] = useState(0);
 
   useEffect(() => {
-    const animate = (setValue, end) => {
+    const animate = (setValue: (val: number) => void, end: number) => {
       let start = 0;
       const step = Math.ceil(end / 60);
 
@@ -33,7 +33,7 @@ export default function Journy() {
   return (
     <div className={journy.outerDiv}>
       <div className="px-6 sm:px-10 md:px-12 pb-8 text-white">
-        {/* Heading */}
+    
         <div className="py-12 sm:py-55">
           <p className="font-bold text-lg sm:text-xl md:text-2xl pb-2">
             Our Journey of Success
@@ -43,7 +43,7 @@ export default function Journy() {
           </p>
         </div>
 
-        {/* Counters */}
+     
         <div
           className={`flex flex-col sm:flex-row sm:flex-wrap justify-between sm:justify-around gap-6 sm:gap-8 border-t pt-6 sm:pt-12 pb-6 ${journy.buttom}`}
         >
