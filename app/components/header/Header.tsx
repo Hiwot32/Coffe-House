@@ -1,29 +1,25 @@
 "use client";
+
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import header from "./header.module.css";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const { data: session } = useSession(); // check user login
+  const { data: session } = useSession();
   const router = useRouter();
 
   const handleBookingClick = () => {
-    if (session) {
-      router.push("/booking"); // user logged in
-    } else {
-      router.push("/login"); // user not logged in
-    }
+    router.push("/login?callbackUrl=/booking");
   };
 
   return (
     <div className={header.outerDiv}>
       <div className="flex justify-between w-[90%] mx-auto py-5 items-center">
 
-        {/* LOGO */}
         <Image
           src="/images/headerImg/imgi_2_logo.svg"
           alt="Coffee Shop Logo"
@@ -31,7 +27,6 @@ export default function Header() {
           height={50}
         />
 
-        {/* DESKTOP LINKS */}
         <ul className="hidden md:flex gap-10 text-white text-lg font-bold">
           <Link href="/">Home</Link>
           <Link href="/about">About Us</Link>
@@ -39,15 +34,29 @@ export default function Header() {
           <Link href="/contact">Contact Us</Link>
         </ul>
 
-        {/* DESKTOP BOOKING BUTTON */}
-        <button
-          onClick={handleBookingClick}
-          className={`hidden md:block text-white font-bold border border-white p-4 rounded-3xl ${header.booking}`}
-        >
-          Book A Table
-        </button>
+        <div className="hidden md:block">
+          {!session ? (
+            <button
+              onClick={handleBookingClick}
+              className={`text-white font-bold border border-white p-4 rounded-3xl ${header.booking}`}
+            >
+              Book A Table
+            </button>
+          ) : (
+            <div className="flex items-center gap-4 border border-white px-5 py-3 rounded-3xl">
+              <span className="text-white font-semibold">
+                {session.user?.name}
+              </span>
+              <button
+                onClick={() => signOut({ callbackUrl: "/" })}
+                className="text-sm text-red-400 hover:text-red-500"
+              >
+                Logout
+              </button>
+            </div>
+          )}
+        </div>
 
-        {/* MOBILE MENU BUTTON */}
         <button
           className="md:hidden text-white text-3xl"
           onClick={() => setOpen(!open)}
@@ -56,20 +65,35 @@ export default function Header() {
         </button>
       </div>
 
-      {/* MOBILE MENU */}
       {open && (
         <div className="md:hidden flex flex-col items-center gap-6 py-6 text-white text-lg font-bold">
+
           <Link href="/" onClick={() => setOpen(false)}>Home</Link>
           <Link href="/about" onClick={() => setOpen(false)}>About Us</Link>
           <Link href="/menu" onClick={() => setOpen(false)}>Menu</Link>
           <Link href="/contact" onClick={() => setOpen(false)}>Contact Us</Link>
 
-          <button
-            onClick={handleBookingClick}
-            className={`border border-white px-6 py-3 rounded-3xl ${header.booking}`}
-          >
-            Book A Table
-          </button>
+          {!session ? (
+            <button
+              onClick={() => {
+                setOpen(false);
+                handleBookingClick();
+              }}
+              className={`border border-white px-6 py-3 rounded-3xl ${header.booking}`}
+            >
+              Book A Table
+            </button>
+          ) : (
+            <div className="flex flex-col items-center gap-2 border border-white px-6 py-3 rounded-3xl">
+              <span>{session.user?.name}</span>
+              <button
+                onClick={() => signOut({ callbackUrl: "/" })}
+                className="text-sm text-red-400"
+              >
+                Logout
+              </button>
+            </div>
+          )}
         </div>
       )}
     </div>

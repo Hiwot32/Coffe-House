@@ -16,45 +16,11 @@
   background-color: rgb(211, 179, 147);
   padding: 30px;
   border-radius: 20px;
-  position: absolute;   /* absolutely position it */
-  bottom: 20px;         /* adjust vertical position */
-  left: 17%;            /* center horizontally */
-  transform: translateX(-50%);  /* perfect centering */
-  width: 60%;           /* optional width */
-  box-shadow: 0 4px 6px rgba(0,0,0,0.3); /* optional shadow for effect */
-}
-/* Shine animation starting from center and disappearing */
-@keyframes shine-diagonal {
-  0% {
-    width: 0;
-    opacity: 0.2;
-    transform: translate(-50%, -50%) rotate(12deg);
-  }
-  50% {
-    width: 150%;
-    opacity: 0.2;
-    transform: translate(-50%, -50%) rotate(12deg);
-  }
-  100% {
-    width: 0;
-    opacity: 0;
-    transform: translate(-50%, -50%) rotate(12deg);
-  }
+  position: absolute;   
+  bottom: 20px;         
+  left: 17%;            
+  transform: translateX(-50%);  
+  width: 60%;           
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3); 
 }
 
-/* Shine div hidden by default */
-.shine {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  height: 100%;
-  background-color: white;
-  opacity: 0.2;
-  transform: translate(-50%, -50%) rotate(12deg);
-  pointer-events: none;
-}
-
-/* Trigger animation on parent hover */
-.group:hover .shine {
-  animation: shine-diagonal 2s ease-in-out forwards;
-}

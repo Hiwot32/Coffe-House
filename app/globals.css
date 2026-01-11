@@ -18,4 +18,43 @@ html {
   scroll-behavior: smooth;
 }
 
+/* globals.css */
+
+/* Shine animation */
+@keyframes shine-diagonal {
+  0% {
+    width: 0;
+    opacity: 0.2;
+    transform: translate(-50%, -50%) rotate(12deg);
+  }
+  50% {
+    width: 150%;
+    opacity: 0.2;
+    transform: translate(-50%, -50%) rotate(12deg);
+  }
+  100% {
+    width: 0;
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(12deg);
+  }
+}
+
+/* Shine element */
+.shine {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 100%;
+  background-color: white;
+  opacity: 0.2;
+  transform: translate(-50%, -50%) rotate(12deg);
+  pointer-events: none;
+}
+
+/* Trigger on hover */
+.group:hover .shine {
+  animation: shine-diagonal 2s ease-in-out forwards;
+}
+
+
 

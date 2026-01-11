@@ -23,8 +23,12 @@ export default function Restaurant() {
                 <p>JOHNATHAN - CHEF MASTER</p>
 
             </div>
-            <div className='rounded-t-full overflow-hidden py-4'>
+            <div className='rounded-t-full overflow-hidden  group relative rounded-xl bg-gray-800'>
                 <Image src='/images/restauratImg/imgi_11_about-restaurant-img.jpg' alt='restaurant' width={560} height={790} />
+                   <div className="absolute top-1/2 left-1/2 w-0 h-full bg-white opacity-20 rotate-12 transform     -translate-x-1/2 -translate-y-1/2
+                  transition-all duration-1000 ease-in-out
+                  group-hover:w-[150%]">
+                    </div>
 
             </div>
             <div className='text-center text-white'>

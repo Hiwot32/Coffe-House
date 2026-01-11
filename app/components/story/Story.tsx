@@ -9,13 +9,18 @@ export default function Story() {
       <div className="py-20 px-10 flex flex-col lg:flex-row gap-12">
 
         {/* Image (UNCHANGED SIZE) */}
-        <div className="rounded-t-full overflow-hidden">
+        <div className="rounded-t-full  group relative overflow-hidden  rounded-xl bg-gray-800">
           <Image
             src="/images/storyImg/imgi_9_our-story-image.jpg"
             alt="coffee cup"
             width={750}
             height={1200}
           />
+                         {/* Shine overlay */}
+    <div className="absolute top-1/2 left-1/2 w-0 h-full bg-white opacity-20 rotate-12 transform     -translate-x-1/2 -translate-y-1/2
+                  transition-all duration-1000 ease-in-out
+                  group-hover:w-[150%]">
+                    </div>
         </div>
 
         {/* Text */}

@@ -1,21 +1,35 @@
-"use client";
-import React, { useState } from "react";
-import offer from "./offer.module.css";
+"use client"
+import  { useState } from "react";
 import Image from "next/image";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import offer from "./offer.module.css";
 
 export default function Offer() {
-  const [openIndex, setOpenIndex] = useState(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const toggleItem = (index) => {
+  const toggleItem = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
+
+  const items = [
+    {
+      title: "Private Dining Room",
+      desc: "Experience an elevated dining experience in our exclusive Private Dining Room.",
+    },
+    {
+      title: "Organize A Wedding",
+      desc: "Celebrate your special day with an elegant and intimate wedding setup tailored just for you.",
+    },
+    {
+      title: "Birthday Party",
+      desc: "Host unforgettable birthday parties in a cozy and stylish environment.",
+    },
+  ];
 
   return (
     <div className={offer.outerDiv}>
       <div className="flex flex-col lg:flex-row gap-8 lg:gap-30 px-6 sm:px-10 py-12 sm:py-20">
-        {/* LEFT CONTENT */}
         <div className="w-full lg:w-1/2 pt-4 text-white">
           <p className="font-bold text-lg sm:text-xl pb-2">What We Offer</p>
           <p className="text-2xl sm:text-3xl md:text-4xl pb-4 font-bold">
@@ -27,26 +41,10 @@ export default function Offer() {
             exclusive business meeting
           </p>
 
-          {/* Accordion Items */}
-          {[
-            {
-              title: "Private Dining Room",
-              desc: "Experience an elevated dining experience in our exclusive Private Dining Room.",
-            },
-            {
-              title: "Organize A Wedding",
-              desc: "Celebrate your special day with an elegant and intimate wedding setup tailored just for you.",
-            },
-            {
-              title: "Birthday Party",
-              desc: "Host unforgettable birthday parties in a cozy and stylish environment.",
-            },
-          ].map((item, index) => (
+          {items.map((item, index) => (
             <div
               key={index}
-              className={`${
-                index < 2 ? "border-b border-amber-100" : ""
-              } py-4 sm:py-5`}
+              className={`${index < 2 ? "border-b border-amber-100" : ""} py-4 sm:py-5`}
             >
               <div
                 className="flex gap-3 items-center cursor-pointer"
@@ -62,8 +60,7 @@ export default function Offer() {
           ))}
         </div>
 
-        {/* RIGHT IMAGE */}
-        <div className="w-full lg:w-1/2 rounded-t-full overflow-hidden">
+        <div className="w-full lg:w-1/2 rounded-t-full group relative overflow-hidden rounded-xl bg-gray-800">
           <Image
             src="/images/offerImg/imgi_17_offer-image.jpg"
             alt="coffee cup"
@@ -71,6 +68,11 @@ export default function Offer() {
             height={1000}
             className="object-cover w-full h-auto"
           />
+          <div
+            className="absolute top-1/2 left-1/2 w-0 h-full bg-white opacity-20 rotate-12 transform -translate-x-1/2 -translate-y-1/2
+                       transition-all duration-1000 ease-in-out
+                       group-hover:w-[150%]"
+          ></div>
         </div>
       </div>
     </div>

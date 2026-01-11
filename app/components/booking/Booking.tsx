@@ -12,26 +12,54 @@ export default function BookingForm() {
     specialRequest: "",
   });
 
-  const [success, setSuccess] = useState(false);
+  const [success, setSuccess] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Booking data:", form);
-    setForm({
-      name: "",
-      email: "",
-      phone: "",
-      date: "",
-      time: "",
-      guests: 1,
-      specialRequest: "",
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setLoading(true);
+  setSuccess("");
+
+  try {
+    const res = await fetch("/api/bookings", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
     });
-    setSuccess(true);
-  };
+
+    const data = await res.json();
+
+    if (res.ok) {
+      setSuccess("Your booking has been confirmed!");
+      setForm({
+        name: "",
+        email: "",
+        phone: "",
+        date: "",
+        time: "",
+        guests: 1,
+        specialRequest: "",
+      });
+            setTimeout(() => {
+        setSuccess("");
+      }, 3000);
+    } else {
+      setSuccess(data.error || "Something went wrong. Try again!");
+    }
+  } catch (err) {
+    console.error(err);
+    setSuccess("Something went wrong. Try again!");
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <div className="max-w-3xl mx-auto p-6 bg-gray-900 text-white rounded-2xl shadow-lg mt-10">
@@ -39,11 +67,12 @@ export default function BookingForm() {
 
       {success && (
         <p className="bg-green-600 text-white p-3 rounded mb-4 text-center">
-          Your booking request has been sent!
+          {success}
         </p>
       )}
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        {/* Name & Email */}
         <div className="flex flex-col md:flex-row gap-4">
           <input
             type="text"
@@ -65,6 +94,7 @@ export default function BookingForm() {
           />
         </div>
 
+        {/* Phone & Date */}
         <div className="flex flex-col md:flex-row gap-4">
           <input
             type="tel"
@@ -85,6 +115,7 @@ export default function BookingForm() {
           />
         </div>
 
+        {/* Time & Guests */}
         <div className="flex flex-col md:flex-row gap-4">
           <input
             type="time"
@@ -108,6 +139,7 @@ export default function BookingForm() {
           </select>
         </div>
 
+        {/* Special Requests */}
         <textarea
           name="specialRequest"
           placeholder="Special Requests"
@@ -115,13 +147,15 @@ export default function BookingForm() {
           onChange={handleChange}
           className="w-full border border-gray-700 p-3 rounded bg-gray-800 resize-none"
           rows={4}
-        ></textarea>
+        />
 
+        {/* Submit */}
         <button
           type="submit"
-          className="bg-blue-600 hover:bg-blue-500 transition text-white font-bold p-3 rounded-lg mt-2"
+          disabled={loading}
+          className="bg-blue-600 hover:bg-blue-500 transition text-white font-bold p-3 rounded-lg mt-2 disabled:opacity-50"
         >
-          Confirm Booking
+          {loading ? "Submitting..." : "Confirm Booking"}
         </button>
       </form>
     </div>

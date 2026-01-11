@@ -4,7 +4,7 @@
 .links2{
    background-color: var(--header-background);
 }
-ul li:hover{
+ul :hover{
     color:var(--header-btn)
 }
 .booking {
@@ -13,10 +13,10 @@ ul li:hover{
   transition: all 0.3s ease;
   cursor: pointer;
   background: transparent;
-  border: 2px solid white; /* Add this line */
+  border: 2px solid white;
   color: white;
-  padding: 0.75rem 1.5rem; /* Tailwind: py-3 px-6 */
-  border-radius: 9999px;   /* Tailwind: rounded-3xl */
+  padding: 0.75rem 1.5rem; 
+  border-radius: 9999px;   
 }
 
 .booking::before {
@@ -27,11 +27,11 @@ ul li:hover{
   transform: translate(-50%, -50%);
   background-color: var(--header-btn);
   transition: width 0.5s ease, height 0.5s ease;
-  z-index: -1; /* behind text */
+  z-index: -1;
 }
 
 .booking:hover {
   background-color: var(--header-btn);
   color: black;
-  border-color: var(--header-btn); /* border changes on hover too */
+  border-color: var(--header-btn); 
 }
