@@ -8,7 +8,7 @@ export default function ContactUs() {
     >
 
       {/* LEFT SECTION */}
-      <div className="w-150 mx-auto text-center">
+      <div className="max-w-xl mx-auto px-4 text-center">
         <p className="text-4xl pb-4">GET IN TOUCH WITH US</p>
         <p className="pb-8 ">
           We’d love to hear from you! Whether you have questions, need support, or want to discuss a project, feel free to reach out.

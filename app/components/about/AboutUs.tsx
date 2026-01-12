@@ -59,7 +59,7 @@ export default function AboutUs() {
             ></div>
           </div>
 
-          <div className="absolute bottom-[20px] left-[-12%]  w-[60%] p-[30px] rounded-[20px] bg-[rgb(211,179,147)] shadow-lg text-black">
+          <div className="hidden lg:block absolute bottom-[20px] left-[-12%]  w-[60%] p-[30px] rounded-[20px] bg-[rgb(211,179,147)] shadow-lg text-black">
             <Image
               src="/images/footerImg/download(1).svg"
               alt="clock"

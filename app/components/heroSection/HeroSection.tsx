@@ -4,7 +4,7 @@ import React from "react";
 export default function HeroSection() {
   return (
     <div
-      className="py-32 md:py-48 lg:py-60 relative 
+      className="py-32 md:py-40 lg:py-60 relative 
   min-h-screen 
   bg-[linear-gradient(rgba(25,34,37,0.7),rgba(25,34,37,0.7)),url('/images/heroImg/imgi_44_hero-bg.jpg')] 
   bg-cover 
